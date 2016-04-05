@@ -17,12 +17,14 @@ HAL_PATH   ?=/usr/local/workspace/stm32/fw_repo/STM32Cube_FW_F4_V1.11.0/Drivers/
 CMSIS_PATH ?=/usr/local/workspace/stm32/fw_repo/STM32Cube_FW_F4_V1.11.0/Drivers/CMSIS
 BSP_PATH   ?=/usr/local/workspace/stm32/fw_repo/STM32Cube_FW_F4_V1.11.0/Drivers/BSP
 
+USB_PATH   ?=/usr/local/workspace/stm32/fw_repo/STM32Cube_FW_F4_V1.11.0/Middlewares/ST/STM32_USB_Device_Library
+
 #define INCLUDES
 BASE_INCLUDES= -I$(LIB_PATH)/include-fixed -L$(LIB_PATH)/thumb,-lc
 
 HAL_INCLUDES= -I$(HAL_PATH)/Inc -I$(CMSIS_PATH)/Include -I$(CMSIS_PATH)/Device/ST/STM32F4xx/Include
 
-CUSTOM_INCLUDES= -IInc -I$(BSP_PATH)/STM32F4-Discovery
+CUSTOM_INCLUDES= -IInc -I$(BSP_PATH)/STM32F4-Discovery -I$(USB_PATH)/Core/Inc -I$(USB_PATH)/Class/HID/Inc -I$(BSP_PATH)/Components/lis302dl -I$(BSP_PATH)/Components/lis3dsh
 
 #define CFLAGS
 DBG = -O2
@@ -42,18 +44,33 @@ SRCS  = startup_stm32f407xx.s
 SRCS += $(BSP_PATH)/STM32F4-Discovery/stm32f4_discovery.c
 
 SRCS += $(HAL_PATH)/Src/stm32f4xx_hal.c
+SRCS += $(HAL_PATH)/Src/stm32f4xx_hal_cortex.c
 SRCS += $(HAL_PATH)/Src/stm32f4xx_hal_gpio.c
 SRCS += $(HAL_PATH)/Src/stm32f4xx_hal_rcc.c
-SRCS += $(HAL_PATH)/Src/stm32f4xx_hal_cortex.c
 
 SRCS += $(HAL_PATH)/Src/stm32f4xx_hal_i2c.c
 SRCS += $(HAL_PATH)/Src/stm32f4xx_hal_spi.c
 SRCS += $(HAL_PATH)/Src/stm32f4xx_hal_dma.c
+SRCS += $(HAL_PATH)/Src/stm32f4xx_hal_pcd.c
+SRCS += $(HAL_PATH)/Src/stm32f4xx_hal_pcd_ex.c
+SRCS += $(HAL_PATH)/Src/stm32f4xx_hal_tim.c
+SRCS += $(HAL_PATH)/Src/stm32f4xx_hal_tim_ex.c
+SRCS += $(HAL_PATH)/Src/stm32f4xx_ll_usb.c
 
 SRCS += Src/system_stm32f4xx.c
 SRCS += Src/stm32f4xx_it.c
 SRCS += Src/stm32f4xx_newlib_stubs.c
+SRCS += Src/stm32f4xx_hal_msp.c
 
+SRCS += $(BSP_PATH)/STM32F4-Discovery/stm32f4_discovery_accelerometer.c
+SRCS += $(BSP_PATH)/Components/lis302dl/lis302dl.c
+SRCS += $(BSP_PATH)/Components/lis3dsh/lis3dsh.c
+SRCS += $(USB_PATH)/Core/Src/usbd_core.c
+SRCS += $(USB_PATH)/Core/Src/usbd_ctlreq.c
+SRCS += $(USB_PATH)/Core/Src/usbd_ioreq.c
+SRCS += $(USB_PATH)/Class/HID/Src/usbd_hid.c
+SRCS += Src/usbd_conf.c
+SRCS += Src/usbd_desc.c
 SRCS += Src/main.c
 
 #define build targets

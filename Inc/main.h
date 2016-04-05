@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    GPIO/GPIO_EXTI/Inc/main.h 
+  * @file    Demonstrations/Inc/main.h 
   * @author  MCD Application Team
-  * @version V1.2.5
+  * @version V1.4.2
   * @date    29-January-2016
   * @brief   Header for main.c module
   ******************************************************************************
@@ -42,6 +42,11 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 #include "stm32f4_discovery.h"
+#include "stm32f4_discovery_accelerometer.h"
+
+#include "usbd_core.h"
+#include "usbd_desc.h"
+#include "usbd_hid.h" 
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/

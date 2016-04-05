@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    GPIO/GPIO_EXTI/Src/stm32f4xx_it.c 
+  * @file    Demonstrations/Src/stm32f4xx_it.c 
   * @author  MCD Application Team
-  * @version V1.2.5
+  * @version V1.4.2
   * @date    29-January-2016
   * @brief   Main Interrupt Service Routines.
   *          This file provides template for all exceptions handler and 
@@ -40,12 +40,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f4xx_it.h"
-
-/** @addtogroup STM32F4xx_HAL_Examples
+   
+/** @addtogroup STM32F4xx_HAL_Applications
   * @{
   */
 
-/** @addtogroup GPIO_EXTI
+/** @addtogroup Demo
   * @{
   */
 
@@ -53,6 +53,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+extern PCD_HandleTypeDef hpcd;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -156,13 +157,17 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   HAL_IncTick();
+  
+  /* Call user callback */
+  HAL_SYSTICK_IRQHandler();
+  
 }
 
 /******************************************************************************/
 /*                 STM32F4xx Peripherals Interrupt Handlers                   */
-/*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
+/*  Add here the Interrupt Handler for the used peripheral(s) , for the  */
 /*  available peripheral interrupt handler's name please refer to the startup */
-/*  file (startup_stm32f4xx.s).                                               */
+/*  file (startup_stm32f407xx.s).                                               */
 /******************************************************************************/
 
 /**
@@ -176,13 +181,16 @@ void EXTI0_IRQHandler(void)
 }
 
 /**
-  * @brief  This function handles PPP interrupt request.
+  * @brief  OTG_FS_IRQHandler
+  *          This function handles USB-On-The-Go FS global interrupt request.
+  *          requests.
   * @param  None
   * @retval None
   */
-/*void PPP_IRQHandler(void)
+void OTG_FS_IRQHandler(void)
 {
-}*/
+   HAL_PCD_IRQHandler(&hpcd);
+}
 
 /**
   * @}

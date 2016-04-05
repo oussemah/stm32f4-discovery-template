@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    GPIO/GPIO_EXTI/Inc/stm32f4xx_it.h 
+  * @file    Demonstrations/Inc/stm32f4xx_it.h 
   * @author  MCD Application Team
-  * @version V1.2.5
+  * @version V1.4.2
   * @date    29-January-2016
   * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
@@ -61,6 +61,7 @@ void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
 void EXTI0_IRQHandler(void);
+void OTG_FS_IRQHandler(void);
 #ifdef __cplusplus
 }
 #endif

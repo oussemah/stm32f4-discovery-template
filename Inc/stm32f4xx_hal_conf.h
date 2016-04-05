@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    GPIO/GPIO_EXTI/Inc/stm32f4xx_hal_conf.h
+  * @file    stm32f4xx_hal_conf.h
   * @author  MCD Application Team
-  * @version V1.2.5
+  * @version V1.4.2
   * @date    29-January-2016
   * @brief   HAL configuration file
   ******************************************************************************
@@ -79,14 +79,14 @@
 /* #define HAL_SAI_MODULE_ENABLED        */   
 /* #define HAL_SD_MODULE_ENABLED         */
 #define HAL_SPI_MODULE_ENABLED       
-/* #define HAL_TIM_MODULE_ENABLED       */
+#define HAL_TIM_MODULE_ENABLED       
 /* #define HAL_UART_MODULE_ENABLED      */
 /* #define HAL_USART_MODULE_ENABLED     */ 
 /* #define HAL_IRDA_MODULE_ENABLED      */
 /* #define HAL_SMARTCARD_MODULE_ENABLED */
 /* #define HAL_WWDG_MODULE_ENABLED      */
 #define HAL_CORTEX_MODULE_ENABLED   
-/* #define HAL_PCD_MODULE_ENABLED      */
+#define HAL_PCD_MODULE_ENABLED      
 /* #define HAL_HCD_MODULE_ENABLED      */
 
 
